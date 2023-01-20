@@ -1,15 +1,16 @@
 const { json } = require('express')
 const express = require('express')
-require('dotenv').config()
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
+const config = require('config')
 
 const app = express()
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))//Pour accepter les données de formulaire
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.connect)
+mongoose.connect(config.get("connect"))
     .then(res => {
         console.log("connected with success")
     })
