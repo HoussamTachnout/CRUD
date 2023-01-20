@@ -1,6 +1,6 @@
 const { json } = require('express')
 const express = require('express')
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
 
@@ -20,6 +20,4 @@ mongoose.connect(process.env.connect)
 app.use('/', userRoutes)
 
 //Port
-app.listen(3000, 'localhost', () => {
-    console.log('listennig for port 3000')
-})
+app.listen(3000, 'localhost', () => { console.log('listennig for port 3000') })
